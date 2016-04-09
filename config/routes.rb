@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
-      mount_devise_token_auth_for 'User', at: 'auth'
+      mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
+      post 'data', controller: :performance_data, action: :create, as: :create
     end
   end
 end
